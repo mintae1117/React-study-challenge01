@@ -1,16 +1,19 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/Home";
 import Detail from "./routes/Detail";
+import Notfound from "./routes/Notfound";
 
 function App(){
   const router = createBrowserRouter([
     {
     path: "/",
     element: <Home />,
+    errorElement: <Notfound/>,
     },
     {
     path: "/detail/:id",
     element: <Detail />,
+    errorElement: <Notfound/>,
     },
   ]);
   return <RouterProvider router={router} />;
