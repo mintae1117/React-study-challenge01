@@ -2,9 +2,10 @@ import { useEffect, useState } from "react";
 import Movie from "../components/Movie";
 import styles from "./Home.module.css";
 
-function Home() {
+export default function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+
   const getMovies = async () => {
     const json = await (
       await fetch(
@@ -15,9 +16,11 @@ function Home() {
     setMovies(json.data.movies);
     setLoading(false);
   };
+
   useEffect(() => {
     getMovies();
   }, []);
+
   return (
     <div className={styles.container}>
       {loading ? (
@@ -41,5 +44,4 @@ function Home() {
       )}
     </div>
   );
-}
-export default Home;
+};

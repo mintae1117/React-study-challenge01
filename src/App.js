@@ -16,6 +16,8 @@ function App(){
     errorElement: <Notfound/>,
     },
   ]);
+
   return <RouterProvider router={router} />;
 };
+
 export default App;

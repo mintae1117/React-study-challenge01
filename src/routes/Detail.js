@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
 
 
-function Detail() {
+export default function Detail() {
     const {id} = useParams();
     const [loading, setLoading] = useState(true);
     const [details, setDetails] = useState([]);
@@ -19,6 +19,7 @@ function Detail() {
         };
         getMovie();
     }, [id]);
+
     return (
         <div className={styles.container}>
           {loading ? (
@@ -34,6 +35,5 @@ function Detail() {
         )}
         </div>
       );
-  }
-  export default Detail;
+  };
   
