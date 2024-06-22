@@ -11,7 +11,7 @@ function App(){
     errorElement: <Notfound/>,
     },
     {
-    path: "/detail/:id",
+    path: "/character/:id",
     element: <Detail />,
     errorElement: <Notfound/>,
     },

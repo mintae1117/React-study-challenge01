@@ -1,22 +1,10 @@
 import { useEffect, useState } from "react";
-import Movie from "../components/Movie";
+import Marvel from "../components/Marvel";
 import styles from "./Home.module.css";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-  const [marvel, setMarvel] = useState([]);
-
-  const getMovies = async () => {
-    const json = await (
-      await fetch(
-        `https://yts.mx/api/v2/list_movies.json?minimum_rating=8.5&sort_by=year`
-      )
-    ).json();
-    console.log(json);
-    setMovies(json.data.movies);
-    setLoading(false);
-  };
+  const [marvels, setMarvel] = useState([]);
 
   const getMarvel = async () => {
     const json = await (
@@ -25,12 +13,11 @@ export default function Home() {
       )
     ).json();
     console.log(json);
-    setMarvel();
+    setMarvel(json.data.results);
     setLoading(false);
   }
 
   useEffect(() => {
-    getMovies();
     getMarvel();
   }, []);
 
@@ -41,16 +28,14 @@ export default function Home() {
         <span>Loading...</span>
         </div>
       ) : (
-        <div className={styles.movies}>
-          {movies.map((movie) => (
-            <Movie
-              key={movie.id}
-              id={movie.id}
-              year={movie.year}
-              coverImg={movie.medium_cover_image}
-              title={movie.title}
-              summary={movie.summary}
-              genres={movie.genres}
+        <div className={styles.marvels}>
+          {marvels.map((marvel) => (
+            <Marvel
+              key={marvel.id}
+              id={marvel.id}
+              year={marvel.modified}
+              coverImg={`${marvel.thumbnail.path}.${marvel.thumbnail.extension}`}
+              title={marvel.name}
             />
           ))}
         </div>

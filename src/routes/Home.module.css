@@ -14,7 +14,7 @@
     font-size: 30px
   }
   
-  .movies {
+  .marvels {
     display: grid;
     grid-template-columns: repeat(2, minmax(400px, 1fr));
     grid-gap: 100px;
@@ -24,7 +24,7 @@
   }
   
   @media screen and (max-width: 1090px) {
-    .movies {
+    .marvels {
       grid-template-columns: 1fr;
       width: 100%;
     }
