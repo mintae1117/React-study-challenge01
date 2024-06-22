@@ -33,7 +33,7 @@ export default function Home() {
             <Marvel
               key={marvel.id}
               id={marvel.id}
-              year={marvel.modified}
+              des={marvel.description}
               coverImg={`${marvel.thumbnail.path}.${marvel.thumbnail.extension}`}
               title={marvel.name}
             />

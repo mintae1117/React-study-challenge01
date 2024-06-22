@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import styles from "./Home.module.css";
+import Character from "../components/Characters";
 
 
 export default function Detail() {
@@ -9,15 +10,15 @@ export default function Detail() {
     const [details, setDetails] = useState([]);
 
     useEffect(() => {
-        const getMovie = async()=>{
+        const getMarvel = async()=>{
             const json = await(
-                await fetch(`https://yts.mx/api/v2/movie_details.json?movie_id=${id}`)
+                await fetch(`https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/${id}`)
             ).json();
             console.log(json);
-            setDetails(json.data.movie);
+            setDetails(json.data.results);
             setLoading(false);
         };
-        getMovie();
+        getMarvel();
     }, [id]);
 
     return (
@@ -28,9 +29,15 @@ export default function Detail() {
             </div>
           ) : (
             <div>
-                <h2>{details.title}</h2>
-                <img src={details.medium_cover_image} alt="cover"></img>
-                <p>{details.description_full}</p>
+            {details.map((marvel) => (
+                <Character
+                key={marvel.id}
+                id={marvel.id}
+                des={marvel.description}
+                coverImg={`${marvel.thumbnail.path}.${marvel.thumbnail.extension}`}
+                title={marvel.name}
+                />
+            ))}
             </div>
         )}
         </div>
