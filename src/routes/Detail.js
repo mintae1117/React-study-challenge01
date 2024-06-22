@@ -36,6 +36,7 @@ export default function Detail() {
                 des={marvel.description}
                 coverImg={`${marvel.thumbnail.path}.${marvel.thumbnail.extension}`}
                 title={marvel.name}
+                modified={marvel.modified}
                 />
             ))}
             </div>
