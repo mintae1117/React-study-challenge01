@@ -5,6 +5,7 @@ import styles from "./Home.module.css";
 export default function Home() {
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [marvel, setMarvel] = useState([]);
 
   const getMovies = async () => {
     const json = await (
@@ -17,8 +18,20 @@ export default function Home() {
     setLoading(false);
   };
 
+  const getMarvel = async () => {
+    const json = await (
+      await fetch(
+        'https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters?limit=50&orderBy=modified&series=24229,1058,2023'
+      )
+    ).json();
+    console.log(json);
+    setMarvel();
+    setLoading(false);
+  }
+
   useEffect(() => {
     getMovies();
+    getMarvel();
   }, []);
 
   return (
