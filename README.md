@@ -8,3 +8,5 @@
 
 ### Marvel api : https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters?limit=50&orderBy=modified&series=24229,1058,2023
 ### Marvel api id : https://marvel-proxy.nomadcoders.workers.dev/v1/public/characters/:id
+
+# 하.... 처참하네... 쫌 열심히 하자...
